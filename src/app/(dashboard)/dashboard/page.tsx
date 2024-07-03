@@ -2,11 +2,9 @@ import React from 'react';
 import {
     ArrowRight,
     Image,
-    LayoutDashboard,
     Paintbrush,
     ScanLine,
     ScanText,
-    Settings,
     Sparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
