@@ -1,56 +1,50 @@
 import React from 'react';
 import {
     ArrowRight,
-    Code,
     Image,
     LayoutDashboard,
-    MessageSquare,
-    Music,
-    Video,
+    Paintbrush,
+    ScanLine,
+    ScanText,
+    Settings,
+    Sparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 const tools = [
     {
-        label: 'Dashboard',
-        icon: LayoutDashboard,
-        href: '/dashboard',
-        textColor: 'text-sky-500',
-        bgColor: 'bg-sky-500/10',
-    },
-    {
-        label: 'Conversatoin',
-        icon: MessageSquare,
-        href: '/conversation',
+        label: 'Image Restore',
+        icon: Image,
+        href: '/image-restore',
         textColor: 'text-violet-500',
         bgColor: 'bg-violet-500/10',
     },
     {
-        label: 'Image Generation',
-        icon: Image,
-        href: '/image',
+        label: 'Generative Fill',
+        icon: Sparkles,
+        href: '/generative-fill',
         textColor: 'text-pink-700',
         bgColor: 'bg-pink-700/10',
     },
     {
-        label: 'Video Generation',
-        icon: Video,
-        href: '/video',
+        label: 'Remove Object',
+        icon: ScanLine,
+        href: '/remove-obj',
         textColor: 'text-orange-700',
         bgColor: 'bg-orange-700/10',
     },
     {
-        label: 'Music Generation',
-        icon: Music,
-        href: '/music',
+        label: 'Object Recolor',
+        icon: Paintbrush,
+        href: '/recolor',
         textColor: 'text-emerald-500',
         bgColor: 'bg-emerald-500/10',
     },
     {
-        label: 'Code Generation',
-        icon: Code,
-        href: '/code',
+        label: 'Remove Background',
+        icon: ScanText,
+        href: '/remove-bg',
         textColor: 'text-green-700',
         bgColor: 'bg-green-700/10',
     },
@@ -63,7 +57,7 @@ const DashboardPage = () => {
                 <h1 className='text-center text-2xl font-bold md:text-4xl'>
                     Explore the power of AI
                 </h1>
-                <p className='text-muted-foreground text-center text-sm font-light md:text-lg'>
+                <p className='text-center text-sm font-light text-muted-foreground md:text-lg'>
                     Chat with smartest AI - Expereince the power of AI
                 </p>
             </div>
@@ -80,7 +74,7 @@ const DashboardPage = () => {
                             </div>
                             <h3 className='font-semibold'>{tool.label}</h3>
                         </div>
-                        <ArrowRight />
+                        <ArrowRight className='size-5' />
                     </Link>
                 ))}
             </div>

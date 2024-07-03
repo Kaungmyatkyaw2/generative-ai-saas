@@ -2,13 +2,13 @@
 
 import { cn } from '@/lib/utils';
 import {
-    Code,
     Image,
     LayoutDashboard,
-    MessageSquare,
-    Music,
+    Paintbrush,
+    ScanLine,
+    ScanText,
     Settings,
-    Video,
+    Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -22,33 +22,33 @@ const routes = [
         color: 'text-sky-500',
     },
     {
-        label: 'Conversatoin',
-        icon: MessageSquare,
-        href: '/conversation',
+        label: 'Image Restore',
+        icon: Image,
+        href: '/image-restore',
         color: 'text-violet-500',
     },
     {
-        label: 'Image Generation',
-        icon: Image,
-        href: '/image',
+        label: 'Generative Fill',
+        icon: Sparkles,
+        href: '/generative-fill',
         color: 'text-pink-700',
     },
     {
-        label: 'Video Generation',
-        icon: Video,
-        href: '/video',
+        label: 'Remove Object',
+        icon: ScanLine,
+        href: '/remove-obj',
         color: 'text-orange-700',
     },
     {
-        label: 'Music Generation',
-        icon: Music,
-        href: '/music',
-        color: 'text-emerlad-500',
+        label: 'Object Recolor',
+        icon: Paintbrush,
+        href: '/recolor',
+        color: 'text-emerald-500',
     },
     {
-        label: 'Code Generation',
-        icon: Code,
-        href: '/code',
+        label: 'Remove Background',
+        icon: ScanText,
+        href: '/remove-bg',
         color: 'text-green-700',
     },
     {
@@ -62,7 +62,7 @@ const Sidebar = () => {
     const pathname = usePathname();
 
     return (
-        <div className='flex h-full flex-col space-y-4 bg-[#111827] py-4 text-white'>
+        <div className='flex h-full flex-col space-y-4 bg-black py-4 text-white'>
             <div className='flex-1 px-3 py-2'>
                 <Link
                     href={'/dashboard'}
@@ -75,11 +75,12 @@ const Sidebar = () => {
                         <Link
                             key={route.href}
                             href={route.href}
-                            className={
-                                cn("group flex w-full cursor-pointer rounded-lg p-3 text-sm font-medium transition hover:bg-white/10 hover:text-white",
-                                    pathname == route.href ? "text-white bg-white/10" : "text-zinc-400  "
-                                )
-                            }
+                            className={cn(
+                                'group flex w-full cursor-pointer rounded-lg p-3 text-sm font-medium transition hover:bg-white/10 hover:text-white',
+                                pathname == route.href
+                                    ? 'bg-white/10 text-white'
+                                    : 'text-zinc-400'
+                            )}
                         >
                             <div className='flex flex-1 items-center gap-2'>
                                 <route.icon className={cn('mr-3 size-5', route.color)} />
