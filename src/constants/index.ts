@@ -1,45 +1,83 @@
-export const navLinks = [
-  {
-    label: 'Home',
-    route: '/',
-    icon: '/assets/icons/home.svg',
+import {
+  Image,
+  LayoutDashboard,
+  Paintbrush,
+  ScanLine,
+  ScanText,
+  Settings,
+  Sparkles,
+} from 'lucide-react';
+
+export const trasnformationsObject = {
+  dashboard: {
+    label: 'Dashboard',
+    icon: LayoutDashboard,
+    href: '/dashboard',
+    textColor: 'text-sky-500',
+    bgColor: 'text-sky-500/10',
+    description: 'Restore your image with most advanced AI',
   },
-  {
+  'image-restore': {
     label: 'Image Restore',
-    route: '/transformations/add/restore',
-    icon: '/assets/icons/image.svg',
+    icon: Image,
+    href: '/transformation/image-restore',
+    textColor: 'text-violet-500',
+    bgColor: 'bg-violet-500/10',
+    description: 'Restore your image with most advanced AI',
   },
-  {
+  'generative-fill': {
     label: 'Generative Fill',
-    route: '/transformations/add/fill',
-    icon: '/assets/icons/stars.svg',
+    icon: Sparkles,
+    href: '/transformation/generative-fill',
+    textColor: 'text-pink-700',
+    bgColor: 'bg-pink-700/10',
+    description: 'Restore your image with most advanced AI',
   },
-  {
-    label: 'Object Remove',
-    route: '/transformations/add/remove',
-    icon: '/assets/icons/scan.svg',
+  'remove-obj': {
+    label: 'Remove Object',
+    icon: ScanLine,
+    href: '/transformation/remove-obj',
+    textColor: 'text-orange-700',
+    bgColor: 'bg-orange-700/10',
+    description: 'Restore your image with most advanced AI',
   },
-  {
+  recolor: {
     label: 'Object Recolor',
-    route: '/transformations/add/recolor',
-    icon: '/assets/icons/filter.svg',
+    icon: Paintbrush,
+    href: '/transformation/recolor',
+    textColor: 'text-emerald-500',
+    bgColor: 'bg-emerald-500/10',
+    description: 'Restore your image with most advanced AI',
   },
-  {
-    label: 'Background Remove',
-    route: '/transformations/add/removeBackground',
-    icon: '/assets/icons/camera.svg',
+  'remove-bg': {
+    label: 'Remove Background',
+    icon: ScanText,
+    href: '/transformation/remove-bg',
+    textColor: 'text-green-700',
+    bgColor: 'bg-green-700/10',
+    description: 'Restore your image with most advanced AI',
   },
-  {
-    label: 'Profile',
-    route: '/profile',
-    icon: '/assets/icons/profile.svg',
+  settings: {
+    label: 'Settings',
+    icon: Settings,
+    href: '/settings',
+    textColor: '',
+    bgColor: 'bg-black/10',
+    description: 'Restore your image with most advanced AI',
   },
-  {
-    label: 'Buy Credits',
-    route: '/credits',
-    icon: '/assets/icons/bag.svg',
-  },
-];
+};
+
+export type TransformationObjectKeys = keyof typeof trasnformationsObject;
+
+const notTools = ['dashboard', 'settings'];
+
+export const tools = Object.keys(trasnformationsObject)
+  .filter((el) => !notTools.includes(el))
+  .map((el) => trasnformationsObject[el as TransformationObjectKeys]);
+
+export const navLinksArray = Object.keys(trasnformationsObject).map(
+  (el) => trasnformationsObject[el as TransformationObjectKeys]
+);
 
 export const plans = [
   {
