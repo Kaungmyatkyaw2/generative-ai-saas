@@ -23,7 +23,7 @@ const DashboardPage = () => {
                         className='flex w-full cursor-pointer items-center justify-between rounded-lg border p-3 shadow-sm transition hover:shadow-md'
                     >
                         <div className='flex items-center gap-4'>
-                            <div className={cn('w-fit rounded-md p-2', tool?.bgColor)}>
+                            <div className={cn('w-fit rounded-md p-2 bg-opacity-10', tool?.bgColor)}>
                                 <tool.icon className={cn('size-5', tool.textColor)} />
                             </div>
                             <h3 className='font-semibold'>{tool.label}</h3>

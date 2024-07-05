@@ -8,75 +8,82 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-export const trasnformationsObject = {
+export const transformationObject = {
   dashboard: {
     label: 'Dashboard',
     icon: LayoutDashboard,
     href: '/dashboard',
     textColor: 'text-sky-500',
-    bgColor: 'text-sky-500/10',
+    bgColor: 'bg-sky-500 hover:bg-sky-500',
     description: 'Restore your image with most advanced AI',
   },
-  'image-restore': {
+  restore: {
     label: 'Image Restore',
     icon: Image,
-    href: '/transformation/image-restore',
+    href: '/transformation/restore',
     textColor: 'text-violet-500',
-    bgColor: 'bg-violet-500/10',
+    bgColor: 'bg-violet-500 hover:bg-violet-500',
     description: 'Restore your image with most advanced AI',
+    config: { restore: true },
   },
-  'generative-fill': {
+  fill: {
     label: 'Generative Fill',
     icon: Sparkles,
-    href: '/transformation/generative-fill',
+    href: '/transformation/fill',
     textColor: 'text-pink-700',
-    bgColor: 'bg-pink-700/10',
+    bgColor: 'bg-pink-700 hover:bg-pink-700',
     description: 'Restore your image with most advanced AI',
+    config: { fillBackground: true },
   },
-  'remove-obj': {
+  remove: {
     label: 'Remove Object',
     icon: ScanLine,
-    href: '/transformation/remove-obj',
+    href: '/transformation/remove',
     textColor: 'text-orange-700',
-    bgColor: 'bg-orange-700/10',
+    bgColor: 'bg-orange-700 hover:bg-orange-700',
     description: 'Restore your image with most advanced AI',
+    config: {
+      remove: { prompt: '', removeShadow: true, multiple: true },
+    },
   },
   recolor: {
     label: 'Object Recolor',
     icon: Paintbrush,
     href: '/transformation/recolor',
     textColor: 'text-emerald-500',
-    bgColor: 'bg-emerald-500/10',
+    bgColor: 'bg-emerald-500 hover:bg-emerald-500',
     description: 'Restore your image with most advanced AI',
+    config: {
+      recolor: { prompt: '', to: '', multiple: true },
+    },
   },
-  'remove-bg': {
+  removeBackground: {
     label: 'Remove Background',
     icon: ScanText,
-    href: '/transformation/remove-bg',
+    href: '/transformation/removeBackground',
     textColor: 'text-green-700',
-    bgColor: 'bg-green-700/10',
+    bgColor: 'bg-green-700 hover:bg-green-700',
     description: 'Restore your image with most advanced AI',
+    config: { removeBackground: true },
   },
   settings: {
     label: 'Settings',
     icon: Settings,
     href: '/settings',
     textColor: '',
-    bgColor: 'bg-black/10',
+    bgColor: 'bg-black hover:bg-black',
     description: 'Restore your image with most advanced AI',
   },
 };
 
-export type TransformationObjectKeys = keyof typeof trasnformationsObject;
-
 const notTools = ['dashboard', 'settings'];
 
-export const tools = Object.keys(trasnformationsObject)
+export const tools = Object.keys(transformationObject)
   .filter((el) => !notTools.includes(el))
-  .map((el) => trasnformationsObject[el as TransformationObjectKeys]);
+  .map((el) => transformationObject[el as TransformationTypeKey]);
 
-export const navLinksArray = Object.keys(trasnformationsObject).map(
-  (el) => trasnformationsObject[el as TransformationObjectKeys]
+export const navLinksArray = Object.keys(transformationObject).map(
+  (el) => transformationObject[el as TransformationTypeKey]
 );
 
 export const plans = [
@@ -156,48 +163,6 @@ export const plans = [
     ],
   },
 ];
-
-export const transformationTypes = {
-  restore: {
-    type: 'restore',
-    title: 'Restore Image',
-    subTitle: 'Refine images by removing noise and imperfections',
-    config: { restore: true },
-    icon: 'image.svg',
-  },
-  removeBackground: {
-    type: 'removeBackground',
-    title: 'Background Remove',
-    subTitle: 'Removes the background of the image using AI',
-    config: { removeBackground: true },
-    icon: 'camera.svg',
-  },
-  fill: {
-    type: 'fill',
-    title: 'Generative Fill',
-    subTitle: "Enhance an image's dimensions using AI outpainting",
-    config: { fillBackground: true },
-    icon: 'stars.svg',
-  },
-  remove: {
-    type: 'remove',
-    title: 'Object Remove',
-    subTitle: 'Identify and eliminate objects from images',
-    config: {
-      remove: { prompt: '', removeShadow: true, multiple: true },
-    },
-    icon: 'scan.svg',
-  },
-  recolor: {
-    type: 'recolor',
-    title: 'Object Recolor',
-    subTitle: 'Identify and recolor objects from the image',
-    config: {
-      recolor: { prompt: '', to: '', multiple: true },
-    },
-    icon: 'filter.svg',
-  },
-};
 
 export const aspectRatioOptions = {
   '1:1': {

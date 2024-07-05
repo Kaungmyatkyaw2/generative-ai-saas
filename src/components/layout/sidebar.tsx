@@ -2,15 +2,6 @@
 
 import { navLinksArray } from '@/constants';
 import { cn } from '@/lib/utils';
-import {
-    Image,
-    LayoutDashboard,
-    Paintbrush,
-    ScanLine,
-    ScanText,
-    Settings,
-    Sparkles,
-} from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
