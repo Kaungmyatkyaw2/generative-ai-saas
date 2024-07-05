@@ -1,5 +1,6 @@
 import Navbar from '@/components/layout/navbar';
 import Sidebar from '@/components/layout/sidebar';
+import { Toaster } from '@/components/ui/toaster';
 import React from 'react';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
@@ -11,6 +12,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             <main className='md:pl-72'>
                 <Navbar />
                 {children}
+                <Toaster />
             </main>
         </div>
     );
