@@ -15,7 +15,6 @@ interface PricingCardProps {
     name: string;
     price: number;
     inclusions: { label: string; isIncluded: boolean }[];
-    buttonText: string;
     userId: string;
     credits: number;
 }
@@ -24,7 +23,6 @@ export const PricingCard: React.FC<PricingCardProps> = ({
     name,
     price,
     inclusions,
-    buttonText,
     userId,
     credits,
 }) => {

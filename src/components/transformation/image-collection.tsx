@@ -8,7 +8,6 @@ import React from 'react';
 import { Button } from '../ui/button';
 import {
     Pagination,
-    PaginationContent,
     PaginationNext,
     PaginationPrevious,
 } from '../ui/pagination';

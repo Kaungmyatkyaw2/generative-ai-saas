@@ -24,7 +24,6 @@ const Credits = async () => {
                 {plans.map((plan, index) => (
                     <PricingCard
                         key={index}
-                        buttonText='Buy'
                         credits={plan.credits}
                         inclusions={plan.inclusions}
                         name={plan.name}

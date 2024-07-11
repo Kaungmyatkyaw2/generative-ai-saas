@@ -5,15 +5,12 @@ import { Button } from '@/components/ui/button';
 import { getImageById } from '@/lib/actions/image.actions';
 import { cn, getImageSize } from '@/lib/utils';
 import { auth } from '@clerk/nextjs/server';
-import { transformationObject } from '@/constants';
 import { DeleteConfirmation } from '@/components/transformation';
 
 const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
     const { userId } = auth();
 
     const image = await getImageById(id);
-
-    const transformation = transformationObject[image.transformationType as TransformationTypeKey]
 
     return (
         <>

@@ -5,7 +5,6 @@ import { useToast } from '../ui/use-toast';
 import {
     CldImage,
     CldUploadWidget,
-    CloudinaryUploadWidgetResults,
 } from 'next-cloudinary';
 import { IImage } from '@/lib/database/models/image.model';
 import { Plus } from 'lucide-react';

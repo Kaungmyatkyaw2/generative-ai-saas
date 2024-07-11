@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { ImageCollection } from '@/components/transformation';
 import { getUserById } from '@/lib/actions/user.actions';
 import { auth } from '@clerk/nextjs/server';
