@@ -19,7 +19,7 @@ const Heading = ({
 }: HeadingProps) => {
     return (
         <>
-            <div className='flex flex-wrap items-center gap-5'>
+            <div className='flex flex-wrap items-center gap-5 mb-8'>
                 <div className={cn('w-fit rounded-md p-2 bg-opacity-10', bgColor)}>
                     <Icon className={cn('h-8 w-8', iconColor)} />
                 </div>

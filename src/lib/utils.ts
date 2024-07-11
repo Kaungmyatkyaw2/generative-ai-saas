@@ -6,6 +6,10 @@ import { twMerge } from 'tailwind-merge';
 
 import { aspectRatioOptions } from '@/constants';
 
+export const deepCloneObject = (obj: Object) => {
+  return JSON.parse(JSON.stringify(obj));
+};
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -17,7 +21,7 @@ export const catchAsync = <T extends (...args: any[]) => Promise<any>>(
       return await fn(...args);
     } catch (error) {
       if (error instanceof Error) {
-        console.error(error.message);
+        console.error(error.message, error.stack);
         throw new Error(`Error: ${error.message}`);
       } else if (typeof error === 'string') {
         console.error(error);

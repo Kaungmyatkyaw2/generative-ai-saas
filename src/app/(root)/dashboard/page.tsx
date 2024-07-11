@@ -12,7 +12,7 @@ const DashboardPage = () => {
                     Explore the power of AI
                 </h1>
                 <p className='text-center text-sm font-light text-muted-foreground md:text-lg'>
-                    Chat with smartest AI - Expereince the power of AI
+                    Edit with smartest AI - Expereince the power of AI
                 </p>
             </div>
             <div className='space-y-4 pb-4'>

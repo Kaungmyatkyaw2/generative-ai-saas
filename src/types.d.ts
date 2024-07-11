@@ -14,40 +14,14 @@ declare type UpdateUserBody = {
   photo: string;
 };
 
-// ====== IMAGE PARAMS
 declare type AddImageParams = {
-  image: {
-    title: string;
-    publicId: string;
-    transformationType: string;
-    width: number;
-    height: number;
-    config: any;
-    secureURL: string;
-    transformationURL: string;
-    aspectRatio: string | undefined;
-    prompt: string | undefined;
-    color: string | undefined;
-  };
+  image: IImage;
   userId: string;
   path: string;
 };
 
 declare type UpdateImageParams = {
-  image: {
-    _id: string;
-    title: string;
-    publicId: string;
-    transformationType: string;
-    width: number;
-    height: number;
-    config: any;
-    secureURL: string;
-    transformationURL: string;
-    aspectRatio: string | undefined;
-    prompt: string | undefined;
-    color: string | undefined;
-  };
+  image: IImage;
   userId: string;
   path: string;
 };
@@ -111,7 +85,7 @@ declare type RemoveUrlQueryParams = {
 
 declare type SearchParamProps = {
   params: { id: string; type: TransformationTypeKey };
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: { [key: string]: string | undefined };
 };
 
 declare type TransformationFormProps = {

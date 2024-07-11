@@ -4,7 +4,6 @@ import {
   Paintbrush,
   ScanLine,
   ScanText,
-  Settings,
   Sparkles,
 } from 'lucide-react';
 
@@ -66,17 +65,9 @@ export const transformationObject = {
     description: 'Restore your image with most advanced AI',
     config: { removeBackground: true },
   },
-  settings: {
-    label: 'Settings',
-    icon: Settings,
-    href: '/settings',
-    textColor: '',
-    bgColor: 'bg-black hover:bg-black',
-    description: 'Restore your image with most advanced AI',
-  },
 };
 
-const notTools = ['dashboard', 'settings'];
+const notTools = ['dashboard'];
 
 export const tools = Object.keys(transformationObject)
   .filter((el) => !notTools.includes(el))

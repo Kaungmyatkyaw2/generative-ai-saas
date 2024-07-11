@@ -2,11 +2,10 @@
 
 import { navLinksArray } from '@/constants';
 import { cn } from '@/lib/utils';
+import { CircleUser, Coins, Projector } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-
-
 
 const Sidebar = () => {
     const pathname = usePathname();
@@ -20,24 +19,70 @@ const Sidebar = () => {
                 >
                     Mr Brain
                 </Link>
-                <div className='w-full space-y-2'>
-                    {navLinksArray.map((route) => (
+                <div className='flex h-[90%] w-full flex-col justify-between'>
+                    <div className='space-y-2'>
+                        {navLinksArray.map((route) => (
+                            <Link
+                                key={route.href}
+                                href={route.href}
+                                className={cn(
+                                    'group flex w-full cursor-pointer rounded-lg p-3 text-sm font-medium transition hover:bg-white/10 hover:text-white',
+                                    pathname == route.href
+                                        ? 'bg-white/10 text-white'
+                                        : 'text-zinc-400'
+                                )}
+                            >
+                                <div className='flex flex-1 items-center gap-2'>
+                                    <route.icon className={cn('mr-3 size-5', route.textColor)} />
+                                    {route.label}
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                    <div className='space-y-2'>
                         <Link
-                            key={route.href}
-                            href={route.href}
+                            href={'/dashboard/credits'}
+                            className={cn(
+                                'group flex w-full cursor-pointer rounded-lg p-3 text-sm font-medium transition hover:bg-orange-500/10 hover:text-orange-500',
+                                pathname == '/dashboard/credits'
+                                    ? 'bg-orange-500/10 text-orange-500'
+                                    : 'text-orange-500'
+                            )}
+                        >
+                            <div className='flex flex-1 items-center gap-2'>
+                                <Coins className={cn('mr-3 size-5')} />
+                                Buy Credits
+                            </div>
+                        </Link>
+                        <Link
+                            href={'/dashboard/profile'}
                             className={cn(
                                 'group flex w-full cursor-pointer rounded-lg p-3 text-sm font-medium transition hover:bg-white/10 hover:text-white',
-                                pathname == route.href
+                                pathname == '/dashboard/profile'
                                     ? 'bg-white/10 text-white'
                                     : 'text-zinc-400'
                             )}
                         >
                             <div className='flex flex-1 items-center gap-2'>
-                                <route.icon className={cn('mr-3 size-5', route.textColor)} />
-                                {route.label}
+                                <CircleUser className={cn('mr-3 size-5')} />
+                                My Profile
                             </div>
                         </Link>
-                    ))}
+                        <Link
+                            href={'/dashboard/my-images'}
+                            className={cn(
+                                'group flex w-full cursor-pointer rounded-lg p-3 text-sm font-medium transition hover:bg-white/10 hover:text-white',
+                                pathname == '/dashboard/my-images'
+                                    ? 'bg-white/10 text-white'
+                                    : 'text-zinc-400'
+                            )}
+                        >
+                            <div className='flex flex-1 items-center gap-2'>
+                                <Projector className={cn('mr-3 size-5')} />
+                                My Images
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

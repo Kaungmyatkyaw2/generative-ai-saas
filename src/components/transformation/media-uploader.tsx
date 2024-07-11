@@ -9,7 +9,7 @@ import {
 } from 'next-cloudinary';
 import { IImage } from '@/lib/database/models/image.model';
 import { Plus } from 'lucide-react';
-import { dataUrl, getImageSize } from '@/lib/utils';
+import { cn, dataUrl, getImageSize } from '@/lib/utils';
 import { PlaceholderValue } from 'next/dist/shared/lib/get-img-props';
 
 interface Props {
@@ -18,6 +18,7 @@ interface Props {
     image: IImage | null;
     publicId?: string;
     type: string;
+    iconColor?: string;
 }
 
 const MediaUploader = ({
@@ -26,6 +27,7 @@ const MediaUploader = ({
     image,
     setImage,
     onValueChange,
+    iconColor,
 }: Props) => {
     const { toast } = useToast();
 
@@ -86,7 +88,7 @@ const MediaUploader = ({
                             className='flex h-fit min-h-72 w-full cursor-pointer flex-col items-center justify-center gap-4 rounded-[10px] border border-dashed bg-neutral-100 p-2 shadow-inner'
                         >
                             <div className='rounded-[10px] bg-white p-2 shadow'>
-                                <Plus className='size-10 text-purple-500' />
+                                <Plus className={cn("size-10 text-purple-500", iconColor)} />
                             </div>
                             <p className='text-sm text-muted-foreground'>
                                 Click here to upload image
