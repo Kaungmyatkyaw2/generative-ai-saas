@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Mr.Brain',
   description: 'AI Saas',
+  icons: {
+    icon: "/assets/photo.svg",
+  },
 };
 
 export default function RootLayout({
