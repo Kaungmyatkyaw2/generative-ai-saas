@@ -31,6 +31,7 @@ import { updateCredit } from '@/lib/actions/user.actions';
 import { getCldImageUrl } from 'next-cloudinary';
 import { createImage, updateImage } from '@/lib/actions/image.actions';
 import { useRouter } from 'next/navigation';
+import { InsufficientCreditsModal } from '../pricing/InsufficientCreditsModal';
 
 const formSchema = z.object({
   title: z.string().min(1, {
@@ -50,6 +51,7 @@ const TransformationForm = ({
   type: tType,
   userId,
   config = null,
+  creditBalance,
 }: TransformationFormProps) => {
   const [isTransforming, setIsTransforming] = useState(false);
   const [newTransformation, setNewTransformation] =
@@ -188,6 +190,8 @@ const TransformationForm = ({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+        {creditBalance < Math.abs(creditFee) && <InsufficientCreditsModal />}
+
         <CustomFormField
           control={form.control}
           name='title'
