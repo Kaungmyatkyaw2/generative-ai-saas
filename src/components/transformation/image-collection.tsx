@@ -2,7 +2,7 @@
 
 import { transformationObject } from '@/constants';
 import { IImage } from '@/lib/database/models/image.model';
-import { cn, formUrlQuery } from '@/lib/utils';
+import { cn, formUrlQuery, getIcon } from '@/lib/utils';
 import { CldImage } from 'next-cloudinary';
 import React from 'react';
 import { Button } from '../ui/button';
@@ -13,15 +13,6 @@ import {
 } from '../ui/pagination';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import {
-    Image,
-    LayoutDashboard,
-    LucideIcon,
-    Paintbrush,
-    ScanLine,
-    ScanText,
-    Sparkles,
-} from 'lucide-react';
 
 const ImageCollection = ({
     images,
@@ -84,16 +75,7 @@ const ImageCard = ({ image }: { image: IImage }) => {
     const transformation =
         transformationObject[image.transformationType as TransformationTypeKey];
 
-    const icons: { [key: string]: LucideIcon } = {
-        fill: Sparkles,
-        recolor: Paintbrush,
-        removeBackground: ScanText,
-        remove: ScanLine,
-        restore: Image,
-        dashboard: LayoutDashboard,
-    };
-
-    const ICON = icons[transformation.key];
+    const ICON = getIcon(transformation.key);
 
     return (
         <Link

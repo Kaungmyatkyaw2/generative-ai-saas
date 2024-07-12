@@ -1,28 +1,10 @@
 import React from 'react';
-import {
-    ArrowRight,
-    Image,
-    LucideIcon,
-    Paintbrush,
-    ScanLine,
-    ScanText,
-    Sparkles,
-    LayoutDashboard
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ArrowRight, LucideIcon } from 'lucide-react';
+import { cn, getIcon } from '@/lib/utils';
 import Link from 'next/link';
 import { tools } from '@/constants';
 
 const DashboardPage = () => {
-    const icons: { [key: string]: LucideIcon } = {
-        fill: Sparkles,
-        recolor: Paintbrush,
-        removeBackground: ScanText,
-        remove: ScanLine,
-        restore: Image,
-        dashboard: LayoutDashboard,
-    };
-
     return (
         <div className='px-4 md:px-20 lg:px-32'>
             <div className='mb-8 space-y-4'>
@@ -35,7 +17,7 @@ const DashboardPage = () => {
             </div>
             <div className='space-y-4 pb-4'>
                 {tools.map((tool) => {
-                    const ICON: LucideIcon = icons[tool.key as keyof typeof icons]!;
+                    const ICON: LucideIcon = getIcon(tool.key);
                     return (
                         <Link
                             href={tool.href}

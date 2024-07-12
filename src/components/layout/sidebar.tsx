@@ -1,32 +1,16 @@
 'use client';
 
 import { navLinksArray } from '@/constants';
-import { cn } from '@/lib/utils';
+import { cn, getIcon } from '@/lib/utils';
 import { CircleUser, Coins, Projector } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import {
-    Image,
-    LucideIcon,
-    Paintbrush,
-    ScanLine,
-    ScanText,
-    Sparkles,
-    LayoutDashboard,
-} from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 
 const Sidebar = () => {
     const pathname = usePathname();
 
-    const icons: { [key: string]: LucideIcon } = {
-        fill: Sparkles,
-        recolor: Paintbrush,
-        removeBackground: ScanText,
-        remove: ScanLine,
-        restore: Image,
-        dashboard: LayoutDashboard,
-    };
     return (
         <div className='flex h-full flex-col space-y-4 bg-black py-4 text-white'>
             <div className='flex-1 px-3 py-2'>
@@ -39,7 +23,7 @@ const Sidebar = () => {
                 <div className='flex h-[90%] w-full flex-col justify-between'>
                     <div className='space-y-2'>
                         {navLinksArray.map((route) => {
-                            const ICON: LucideIcon = icons[route.key as keyof typeof icons]!;
+                            const ICON: LucideIcon = getIcon(route.key);
 
                             return (
                                 <Link

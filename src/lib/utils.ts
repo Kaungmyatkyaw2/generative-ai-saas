@@ -5,6 +5,28 @@ import qs from 'qs';
 import { twMerge } from 'tailwind-merge';
 
 import { aspectRatioOptions } from '@/constants';
+import {
+  Image,
+  LayoutDashboard,
+  LucideIcon,
+  Paintbrush,
+  ScanLine,
+  ScanText,
+  Sparkles,
+} from 'lucide-react';
+
+export const getIcon = (key: string) => {
+  const icons: { [key: string]: LucideIcon } = {
+    fill: Sparkles,
+    recolor: Paintbrush,
+    removeBackground: ScanText,
+    remove: ScanLine,
+    restore: Image,
+    dashboard: LayoutDashboard,
+  };
+
+  return icons[key];
+};
 
 export const deepCloneObject = (obj: Object) => {
   return JSON.parse(JSON.stringify(obj));
@@ -53,7 +75,7 @@ const toBase64 = (str: string) =>
     ? Buffer.from(str).toString('base64')
     : window.btoa(str);
 
-export const dataUrl = `data:image/svg+xml;base64,${toBase64(
+export const dataUrl = `data:Image/svg+xml;base64,${toBase64(
   shimmer(1000, 1000)
 )}`;
 
@@ -97,23 +119,23 @@ export const debounce = (func: (...args: any[]) => void, delay: number) => {
   };
 };
 
-// GE IMAGE SIZE
+// GE Image SIZE
 export type AspectRatioKey = keyof typeof aspectRatioOptions;
 export const getImageSize = (
   type: string,
-  image: any,
+  Image: any,
   dimension: 'width' | 'height'
 ): number => {
   if (type === 'fill') {
     return (
-      aspectRatioOptions[image.aspectRatio as AspectRatioKey]?.[dimension] ||
+      aspectRatioOptions[Image.aspectRatio as AspectRatioKey]?.[dimension] ||
       1000
     );
   }
-  return image?.[dimension] || 1000;
+  return Image?.[dimension] || 1000;
 };
 
-// DOWNLOAD IMAGE
+// DOWNLOAD Image
 export const download = (url: string, filename: string) => {
   if (!url) {
     throw new Error('Resource URL not provided! You need to provide one');
