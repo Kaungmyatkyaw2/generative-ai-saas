@@ -13,6 +13,15 @@ import {
 } from '../ui/pagination';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import {
+    Image,
+    LayoutDashboard,
+    LucideIcon,
+    Paintbrush,
+    ScanLine,
+    ScanText,
+    Sparkles,
+} from 'lucide-react';
 
 const ImageCollection = ({
     images,
@@ -48,7 +57,7 @@ const ImageCollection = ({
 
             {pageCount > 1 && (
                 <Pagination className='mt-10 w-full'>
-                    <div className='flex flex-wrap w-full justify-center items-center gap-5'>
+                    <div className='flex w-full flex-wrap items-center justify-center gap-5'>
                         <Button disabled={page <= 1} onClick={() => onPageChange('prev')}>
                             <PaginationPrevious className='hover:bg-transparent hover:text-white' />
                         </Button>
@@ -74,8 +83,23 @@ const ImageCollection = ({
 const ImageCard = ({ image }: { image: IImage }) => {
     const transformation =
         transformationObject[image.transformationType as TransformationTypeKey];
+
+    const icons: { [key: string]: LucideIcon } = {
+        fill: Sparkles,
+        recolor: Paintbrush,
+        removeBackground: ScanText,
+        remove: ScanLine,
+        restore: Image,
+        dashboard: LayoutDashboard,
+    };
+
+    const ICON = icons[transformation.key];
+
     return (
-        <Link href={`/dashboard/my-images/${image._id}`} className='w-full space-y-3 rounded-lg p-2 shadow-sm sm:w-[220px]'>
+        <Link
+            href={`/dashboard/my-images/${image._id}`}
+            className='w-full space-y-3 rounded-lg p-2 shadow-sm sm:w-[220px]'
+        >
             <CldImage
                 src={image.publicId}
                 alt={image.title}
@@ -87,10 +111,10 @@ const ImageCard = ({ image }: { image: IImage }) => {
                 sizes='(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw'
             />
             <div className='flex items-center justify-between'>
-                <h3 className='text-lg font-bold text-gray-500 line-clamp-1 '>{image.title}</h3>
-                <transformation.icon
-                    className={cn('size-5', transformation.textColor)}
-                />
+                <h3 className='line-clamp-1 text-lg font-bold text-gray-500'>
+                    {image.title}
+                </h3>
+                <ICON className={cn('size-5', transformation.textColor)} />
             </div>
         </Link>
     );

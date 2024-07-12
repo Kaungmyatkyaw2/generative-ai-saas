@@ -1,10 +1,28 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import {
+    ArrowRight,
+    Image,
+    LucideIcon,
+    Paintbrush,
+    ScanLine,
+    ScanText,
+    Sparkles,
+    LayoutDashboard
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { tools } from '@/constants';
 
 const DashboardPage = () => {
+    const icons: { [key: string]: LucideIcon } = {
+        fill: Sparkles,
+        recolor: Paintbrush,
+        removeBackground: ScanText,
+        remove: ScanLine,
+        restore: Image,
+        dashboard: LayoutDashboard,
+    };
+
     return (
         <div className='px-4 md:px-20 lg:px-32'>
             <div className='mb-8 space-y-4'>
@@ -16,21 +34,29 @@ const DashboardPage = () => {
                 </p>
             </div>
             <div className='space-y-4 pb-4'>
-                {tools.map((tool) => (
-                    <Link
-                        href={tool.href}
-                        key={tool.href}
-                        className='flex w-full cursor-pointer items-center justify-between rounded-lg border p-3 shadow-sm transition hover:shadow-md'
-                    >
-                        <div className='flex items-center gap-4'>
-                            <div className={cn('w-fit rounded-md p-2 bg-opacity-10', tool?.bgColor)}>
-                                <tool.icon className={cn('size-5', tool.textColor)} />
+                {tools.map((tool) => {
+                    const ICON: LucideIcon = icons[tool.key as keyof typeof icons]!;
+                    return (
+                        <Link
+                            href={tool.href}
+                            key={tool.href}
+                            className='flex w-full cursor-pointer items-center justify-between rounded-lg border p-3 shadow-sm transition hover:shadow-md'
+                        >
+                            <div className='flex items-center gap-4'>
+                                <div
+                                    className={cn(
+                                        'w-fit rounded-md bg-opacity-10 p-2',
+                                        tool?.bgColor
+                                    )}
+                                >
+                                    <ICON className={cn('size-5', tool.textColor)} />
+                                </div>
+                                <h3 className='font-semibold'>{tool.label}</h3>
                             </div>
-                            <h3 className='font-semibold'>{tool.label}</h3>
-                        </div>
-                        <ArrowRight className='size-5' />
-                    </Link>
-                ))}
+                            <ArrowRight className='size-5' />
+                        </Link>
+                    );
+                })}
             </div>
         </div>
     );

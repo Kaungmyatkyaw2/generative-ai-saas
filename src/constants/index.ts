@@ -1,16 +1,7 @@
-import {
-  Image,
-  LayoutDashboard,
-  Paintbrush,
-  ScanLine,
-  ScanText,
-  Sparkles,
-} from 'lucide-react';
-
 export const transformationObject = {
   dashboard: {
     label: 'Dashboard',
-    icon: LayoutDashboard,
+    key: 'dashboard',
     href: '/dashboard',
     textColor: 'text-sky-500',
     bgColor: 'bg-sky-500 hover:bg-sky-500',
@@ -18,25 +9,24 @@ export const transformationObject = {
   },
   restore: {
     label: 'Image Restore',
-    icon: Image,
     href: '/transformation/restore',
     textColor: 'text-violet-500',
     bgColor: 'bg-violet-500 hover:bg-violet-500',
     description: 'Restore your image with most advanced AI',
     config: { restore: true },
+    key: 'restore',
   },
   fill: {
     label: 'Generative Fill',
-    icon: Sparkles,
     href: '/transformation/fill',
     textColor: 'text-pink-700',
     bgColor: 'bg-pink-700 hover:bg-pink-700',
     description: 'Restore your image with most advanced AI',
     config: { fillBackground: true },
+    key: 'fill',
   },
   remove: {
     label: 'Remove Object',
-    icon: ScanLine,
     href: '/transformation/remove',
     textColor: 'text-orange-700',
     bgColor: 'bg-orange-700 hover:bg-orange-700',
@@ -44,10 +34,10 @@ export const transformationObject = {
     config: {
       remove: { prompt: '', removeShadow: true, multiple: true },
     },
+    key: 'remove',
   },
   recolor: {
     label: 'Object Recolor',
-    icon: Paintbrush,
     href: '/transformation/recolor',
     textColor: 'text-emerald-500',
     bgColor: 'bg-emerald-500 hover:bg-emerald-500',
@@ -55,15 +45,16 @@ export const transformationObject = {
     config: {
       recolor: { prompt: '', to: '', multiple: true },
     },
+    key: 'recolor',
   },
   removeBackground: {
     label: 'Remove Background',
-    icon: ScanText,
     href: '/transformation/removeBackground',
     textColor: 'text-green-700',
     bgColor: 'bg-green-700 hover:bg-green-700',
     description: 'Restore your image with most advanced AI',
     config: { removeBackground: true },
+    key: 'removeBackground',
   },
 };
 
