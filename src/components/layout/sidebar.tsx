@@ -54,20 +54,7 @@ const Sidebar = () => {
                                 Buy Credits
                             </div>
                         </Link>
-                        <Link
-                            href={'/dashboard/profile'}
-                            className={cn(
-                                'group flex w-full cursor-pointer rounded-lg p-3 text-sm font-medium transition hover:bg-white/10 hover:text-white',
-                                pathname == '/dashboard/profile'
-                                    ? 'bg-white/10 text-white'
-                                    : 'text-zinc-400'
-                            )}
-                        >
-                            <div className='flex flex-1 items-center gap-2'>
-                                <CircleUser className={cn('mr-3 size-5')} />
-                                My Profile
-                            </div>
-                        </Link>
+
                         <Link
                             href={'/dashboard/my-images'}
                             className={cn(
@@ -80,6 +67,21 @@ const Sidebar = () => {
                             <div className='flex flex-1 items-center gap-2'>
                                 <Projector className={cn('mr-3 size-5')} />
                                 My Images
+                            </div>
+                        </Link>
+
+                        <Link
+                            href={'/dashboard/profile'}
+                            className={cn(
+                                'group flex w-full cursor-pointer rounded-lg p-3 text-sm font-medium transition hover:bg-sky-500/10 hover:text-sky-500',
+                                pathname == '/dashboard/profile'
+                                    ? 'bg-sky-500/10 text-sky-500'
+                                    : 'text-sky-500'
+                            )}
+                        >
+                            <div className='flex flex-1 items-center gap-2'>
+                                <CircleUser className={cn('mr-3 size-5')} />
+                                My Profile
                             </div>
                         </Link>
                     </div>
